@@ -9,7 +9,7 @@ const token = process.TOKEN; // for sending request
 const mytoken = process.MYTOKEN; // for verifying webhook
 
 
-app.listen(8000 || process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log("webhook is listening");
 });
 
