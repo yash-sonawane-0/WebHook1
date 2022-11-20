@@ -10,7 +10,7 @@ const mytoken = process.env.MYTOKEN; // for verifying webhook
 
 
 app.listen(process.env.PORT, () => {
-    console.log("webhook is listening");
+    console.log("webhook is listening OK");
 });
 
 // to verify the callback url from dashboard side - cloud api side
