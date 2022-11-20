@@ -14,20 +14,39 @@ app.listen(process.env.PORT, () => {
 });
 
 // to verify the callback url from dashboard side - cloud api side
+// app.get("/webhook", (req, res) => {
+//     console.log("Inside get");
+//     let mode = req.query["hub.mode"];
+//     let challenge = req.query["hub.challenge"];
+//     let token = req.query["hub.verify_token"];
+
+//     if (mode && token) {
+//         if (mode === "subscribe" && token === mytoken) {
+//             res.status(200).send(challenge);
+//         } else {
+//             res.status(403);
+//         }
+//     }
+// });
+//to verify the callback url from dashboard side - cloud api side
 app.get("/webhook", (req, res) => {
-    console.log("Inside get");
     let mode = req.query["hub.mode"];
-    let challenge = req.query["hub.challenge"];
+    let challange = req.query["hub.challenge"];
     let token = req.query["hub.verify_token"];
 
+
     if (mode && token) {
+
         if (mode === "subscribe" && token === mytoken) {
-            res.status(200).send(challenge);
+            res.status(200).send(challange);
         } else {
             res.status(403);
         }
+
     }
+
 });
+
 
 app.post("/webhook", (req, res) => {
     let body_param = req.body;
