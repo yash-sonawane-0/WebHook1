@@ -37,12 +37,16 @@ app.post("/webhook", (req, res) => {
     if (body_param.object) {
         if (body_param.entry &&
             body_param.entry[0].changes &&
-            body_param.entry[0].changes[0].value.message &&
-            body_param.entry[0].changes[0].value.message[0]) {
+            body_param.entry[0].changes[0].value.messages &&
+            body_param.entry[0].changes[0].value.messages[0]) {
 
             let phone_no_id = body_param.entry[0].changes[0].value.metadata.phone_no_id;
             let from = body_param.entry[0].changes[0].value.messages[0].from;
             let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+
+            console.log("PhoneNumber : " + phone_no_id);
+            console.log("from : " + from);
+            console.log("Body param : " + msg_body);
 
             // SEE -> BB
             axios({
@@ -52,7 +56,7 @@ app.post("/webhook", (req, res) => {
                     messaging_product: "whatsapp",
                     to: "from",
                     text: {
-                        "body": "Hii, this is yash"
+                        "body": "Hii, this is Yash's Webhook, you Sent message is : " + msg_body,
                     }
                 },
                 headers: {
