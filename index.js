@@ -5,8 +5,8 @@ require('dotenv').config(); // good practice to keep secret here
 
 const app = express().use(body_parser.json());
 
-const token = process.TOKEN; // for sending request
-const mytoken = process.MYTOKEN; // for verifying webhook
+const token = process.env.TOKEN; // for sending request
+const mytoken = process.env.MYTOKEN; // for verifying webhook
 
 
 app.listen(process.env.PORT, () => {
